@@ -171,4 +171,16 @@ func GetProductById(c *fiber.Ctx) error {
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	Id := c.Query("Id")
 	defer cancel()
+
+	objId, err := primitive.ObjectIDFromHex(Id); if err != nil {
+		return c.Status(http.StatusBadRequest).JSON(map[string]string{"error": err.Error()})
+	}
+
+	var product models.Product
+
+	mongoErr := ProductCollection.FindOne(ctx, bson.M{"_id":objId}).Decode(&product); if mongoErr != nil {
+		return c.Status(http.StatusInternalServerError).JSON(map[string]string{"error":mongoErr.Error()})
+	}
+
+	return c.Status(http.StatusOK).JSON(product)
 }
