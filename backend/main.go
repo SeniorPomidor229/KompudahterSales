@@ -35,8 +35,8 @@ func main() {
 	})
 
 	app.Static(
-		"/public",  // mount address
-		"./public", // path to the file folder
+		"/public",  
+		"./public", 
 	)
 
 	routes.FileRouter(app)

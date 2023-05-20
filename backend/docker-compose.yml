@@ -1,0 +1,25 @@
+version: '3.7'
+
+services:
+  api:
+    build: ./
+    depends_on:
+       - mongodb
+    ports:
+      - "8000:8000"
+    environment:
+      - MONGOURI=mongodb://mongodb:27017/
+      - PORT = ":8000"
+      - JWT_SECRET_KEY = "Baboon"
+      - JWT_SECRET_KEY_EXPIRE_MINUTES_COUNT = "360"
+
+  mongodb:
+    image: mongo:latest
+    container_name: monogodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodata:/data/db
+
+volumes:
+  mongodata:
