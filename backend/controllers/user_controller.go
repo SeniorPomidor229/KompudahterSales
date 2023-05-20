@@ -76,7 +76,7 @@ func Login(c *fiber.Ctx) error {
 
 	var userdb models.User
 
-	err := UserCollection.FindOne(ctx, bson.M{"username": user.Username}).Decode(&userdb); if err != nil {
+	err := UserCollection.FindOne(ctx, bson.M{"email": user.Username}).Decode(&userdb); if err != nil {
 		return c.Status(http.StatusBadRequest).JSON(map[string]string{"error": err.Error()})
 	}
 

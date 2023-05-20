@@ -10,7 +10,7 @@ const CategoryList: React.FC = () => {
   }, []);
 
   const fetchCategories = () => {
-    fetch('127.0.0.1:8000/Category')
+    fetch('http://127.0.0.1:8000/Category')
       .then((response) => response.json())
       .then((data) => setCategories(data))
       .catch((error) => console.error('Error fetching categories:', error));
