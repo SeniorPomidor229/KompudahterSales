@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Задаем минимальную высоту 100% высоты видимой области */
+}
+
+.content {
+  flex: 1; /* Растягиваем содержимое, чтобы занять все доступное место */
+}

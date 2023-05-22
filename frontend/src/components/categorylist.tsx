@@ -18,7 +18,7 @@ const CategoryList: React.FC = () => {
 
   return (
     <ul>
-      {categories.map((category) => (
+      {categories?.map((category) => (
         <li key={category._id}>{category.name}</li>
       ))}
     </ul>

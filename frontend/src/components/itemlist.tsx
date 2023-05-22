@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Card, Container, Row, Col, Button } from 'react-bootstrap';
 import { Product } from '../types/product';
+import CategoryList from './categorylist';
 
 const ProductsList: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -18,8 +19,9 @@ const ProductsList: React.FC = () => {
 
   return (
     <Container>
+      <CategoryList />
       <Row>
-        {products.map((product) => (
+        {products?.map((product) => (
           <Col key={product._id} md={3} sm={6} className="mb-4">
             <Card>
               <Card.Img variant="top" src={product.photo_url} />
@@ -28,8 +30,8 @@ const ProductsList: React.FC = () => {
                 <Card.Text>Цена: ${product.price}</Card.Text>
               </Card.Body>
               <Card.Footer >
-                <Button className='primary' style={{margin:"15px"}}>В корзину</Button>
-                <Button className='primary' style={{margin:"15px"}}>Подробнее</Button>
+                <Button className='primary' style={{ margin: "15px" }}>В корзину</Button>
+                <Button className='primary' style={{ margin: "15px" }}>Подробнее</Button>
               </Card.Footer>
             </Card>
           </Col>

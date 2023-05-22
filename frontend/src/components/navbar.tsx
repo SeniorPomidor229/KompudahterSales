@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar, Nav } from 'react-bootstrap';
+import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import logo  from '../imgs/logo.png'
 
@@ -30,6 +30,16 @@ const MyNavbar: React.FC = () => {
           <Nav.Link as={Link} to="/contact">
             Контакты
           </Nav.Link>
+        </Nav>
+        <Nav>
+          <NavDropdown  title="Аккаунт" id="account-dropdown" style={{left:"1000%"}}>
+            <NavDropdown.Item as={Link} to="/login">
+              Войти
+            </NavDropdown.Item>
+            <NavDropdown.Item as={Link} to="/signup">
+              Зарегистрироваться
+            </NavDropdown.Item>
+          </NavDropdown>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
